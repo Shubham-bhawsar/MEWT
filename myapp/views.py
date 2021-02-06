@@ -1,5 +1,7 @@
 from django.shortcuts import render,HttpResponse,redirect
 from django.contrib.auth import authenticate,login
+from .models import Contacts
+
 # Create your views here.
 # Create your views here.
 def index(request):
@@ -21,3 +23,15 @@ def loginfun(request):
     # No backend authenticated the credentials
         
     return render(request,"login.html")
+
+def formfun(request):
+    if(request.method=="POST"):
+        email=request.POST.get('email')
+        name=request.POST.get('name')
+        message=request.POST.get('message')
+        subject=request.POST.get('subject')
+        contacts=Contacts(Email=email,Name=name,Message=message,Subject=subject)
+        contacts.save()
+    return render(request,'forms.html')
+
+

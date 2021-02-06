@@ -5,7 +5,10 @@ from myapp import views
 
 urlpatterns = [
     path('', views.index,name="home"),
-    path('login', views.loginfun,name="login")
+    path('login', views.loginfun,name="login"),
+    path('formd', views.formfun,name="formfun")
+    
+    
    
 
 ]
